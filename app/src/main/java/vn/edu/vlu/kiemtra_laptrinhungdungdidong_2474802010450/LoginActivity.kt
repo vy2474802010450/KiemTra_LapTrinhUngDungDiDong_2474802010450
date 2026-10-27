@@ -8,6 +8,7 @@ import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 
+import android.content.Intent
 class LoginActivity : AppCompatActivity() {
 
     private lateinit var etEmail: EditText
@@ -47,9 +48,20 @@ class LoginActivity : AppCompatActivity() {
                     tvStatus.text = "Mật khẩu phải có ít nhất 6 ký tự!"
                 }
 
+
                 else -> {
                     tvStatus.text = "Xác thực thành công!"
+
+                    // Tạo Intent chuyển sang ProfileActivity
+                    val intent = Intent(this, ProfileActivity::class.java)
+
+                    // Truyền Email sang ProfileActivity
+                    intent.putExtra("EMAIL", email)
+
+                    // Mở màn hình ProfileActivity
+                    startActivity(intent)
                 }
+
             }
         }
     }
